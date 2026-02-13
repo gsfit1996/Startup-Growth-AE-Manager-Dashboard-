@@ -1,0 +1,254 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Segment {
+  SEED
+  SERIES_A
+  SERIES_B_PLUS
+}
+
+enum AiMaturity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum PaymentStatus {
+  GOOD
+  WATCH
+  OVERDUE
+}
+
+enum OpportunityType {
+  EXPANSION
+  RENEWAL
+}
+
+enum OpportunityStage {
+  PROSPECT
+  DISCOVERY
+  TECH_EVAL
+  PROPOSAL
+  NEGOTIATION
+  LEGAL
+  CLOSED_WON
+  CLOSED_LOST
+}
+
+enum ActivityType {
+  CALL
+  EMAIL
+  MEETING
+  QBR
+}
+
+enum QBRStatus {
+  COMPLETED
+  SCHEDULED
+  OVERDUE
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model User {
+  id            String   @id @default(cuid())
+  name          String
+  email         String   @unique
+  role          String
+  createdAt     DateTime @default(now())
+  managedAEs    AE[]
+  quarterTarget QuarterTarget[]
+}
+
+model AE {
+  id            String       @id @default(cuid())
+  name          String
+  region        String
+  startDate     DateTime
+  managerId     String?
+  manager       User?        @relation(fields: [managerId], references: [id])
+  accounts      Account[]
+  opportunities Opportunity[]
+  activities    Activity[]
+
+  @@index([region])
+}
+
+model Account {
+  id            String        @id @default(cuid())
+  name          String
+  segment       Segment
+  region        String
+  arr           Float
+  createdAt     DateTime      @default(now())
+  renewalDate   DateTime
+  aiMaturity    AiMaturity
+  paymentStatus PaymentStatus
+  healthScore   Int           @default(0)
+  ownerAEId     String
+  ownerAE       AE            @relation(fields: [ownerAEId], references: [id])
+  stakeholders  Stakeholder[]
+  usageMetrics  UsageMetric[]
+  supportTicket SupportTicket[]
+  opportunities Opportunity[]
+  activities    Activity[]
+  qbrs          QBR[]
+  accountPlan   AccountPlan?
+
+  @@index([segment, region])
+  @@index([renewalDate])
+  @@index([healthScore])
+}
+
+model Stakeholder {
+  id        String  @id @default(cuid())
+  accountId String
+  name      String
+  role      String
+  seniority String
+  account   Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId])
+}
+
+model UsageMetric {
+  id         String   @id @default(cuid())
+  accountId  String
+  date       DateTime
+  apiCalls   Int
+  seatsActive Int
+  account    Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId, date])
+}
+
+model SupportTicket {
+  id        String   @id @default(cuid())
+  accountId String
+  date      DateTime
+  severity  Severity
+  status    String
+  account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId, date])
+}
+
+model Opportunity {
+  id                String           @id @default(cuid())
+  accountId         String
+  ownerAEId         String
+  createdAt         DateTime         @default(now())
+  stage             OpportunityStage
+  amount            Float
+  type              OpportunityType
+  closeDate         DateTime
+  probability       Float
+  discountRequested Float
+  nextStep          String
+  account           Account          @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  ownerAE           AE               @relation(fields: [ownerAEId], references: [id])
+  discountApproval  DiscountApproval?
+
+  @@index([closeDate, stage])
+  @@index([ownerAEId])
+  @@index([probability])
+}
+
+model Activity {
+  id        String       @id @default(cuid())
+  aeId      String
+  accountId String
+  date      DateTime
+  type      ActivityType
+  outcome   String
+  ae        AE           @relation(fields: [aeId], references: [id], onDelete: Cascade)
+  account   Account      @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([aeId, date])
+  @@index([accountId, date])
+}
+
+model QBR {
+  id        String    @id @default(cuid())
+  accountId String
+  quarter   String
+  status    QBRStatus
+  notes     String
+  nextSteps String
+  account   Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId, quarter])
+}
+
+model ForecastSnapshot {
+  id        String   @id @default(cuid())
+  quarter   String
+  commit    Float
+  bestCase  Float
+  upside    Float
+  actual    Float
+  createdAt DateTime @default(now())
+
+  @@index([quarter, createdAt])
+}
+
+model AccountPlan {
+  id                 String   @id @default(cuid())
+  accountId          String   @unique
+  businessGoals      String
+  successMetrics     String
+  stakeholderMap     String
+  riskLog            String
+  expansionHypothesis String
+  execAlignmentDate  DateTime?
+  nextQbrDate        DateTime?
+  updatedAt          DateTime @updatedAt
+  account            Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+}
+
+model QuarterTarget {
+  id            String   @id @default(cuid())
+  quarter       String
+  teamTargetArr Float
+  createdAt     DateTime @default(now())
+  ownerId       String?
+  owner         User?    @relation(fields: [ownerId], references: [id])
+
+  @@unique([quarter])
+}
+
+model DiscountApproval {
+  id                String         @id @default(cuid())
+  opportunityId     String         @unique
+  requestedDiscount Float
+  approvalStatus    ApprovalStatus
+  approverRole      String
+  recommendedCounter String
+  riskLevel         RiskLevel
+  justification     String
+  opportunity       Opportunity    @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+}
+
