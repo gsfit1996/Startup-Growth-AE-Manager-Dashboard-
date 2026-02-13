@@ -5,6 +5,10 @@ export const filterSchema = z.object({
   segment: z.enum(["all", "seed", "series_a", "series_b_plus"]).default("all"),
   region: z.enum(["all", "emea", "na", "apac"]).default("all"),
   q: z.string().trim().default(""),
+  density: z.enum(["compact", "comfortable"]).default("comfortable"),
+  view: z.string().trim().default(""),
+  sort: z.string().trim().default(""),
+  dir: z.enum(["asc", "desc"]).default("desc"),
 });
 
 export type DashboardFilters = z.infer<typeof filterSchema>;
@@ -15,6 +19,10 @@ export function parseFilters(input: Record<string, string | string[] | undefined
     segment: asString(input.segment),
     region: asString(input.region),
     q: asString(input.q),
+    density: asString(input.density),
+    view: asString(input.view),
+    sort: asString(input.sort),
+    dir: asString(input.dir),
   });
 }
 

@@ -5,6 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "@/components/tables/data-table";
 import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/format";
+import { TableDensity } from "@/lib/types/dashboard";
 
 type DealDeskRow = {
   id: string;
@@ -47,7 +48,7 @@ const columns: ColumnDef<DealDeskRow>[] = [
     header: "Risk",
     cell: ({ row }) => (
       <Badge variant={row.original.risk === "high" ? "danger" : row.original.risk === "medium" ? "warning" : "success"}>
-        {row.original.risk}
+        {row.original.risk.toUpperCase()}
       </Badge>
     ),
   },
@@ -55,6 +56,15 @@ const columns: ColumnDef<DealDeskRow>[] = [
   { accessorKey: "recommendedCounter", header: "Recommended Counter" },
 ];
 
-export function DealDeskTable({ data }: { data: DealDeskRow[] }) {
-  return <DataTable columns={columns} data={data} searchPlaceholder="Search deal desk..." />;
+export function DealDeskTable({ data, density }: { data: DealDeskRow[]; density?: TableDensity }) {
+  return (
+    <DataTable
+      tableId="deal-desk"
+      columns={columns}
+      data={data}
+      searchPlaceholder="Search deal desk..."
+      initialDensity={density}
+      getRowClassName={(row) => (row.risk === "high" ? "bg-[color:var(--accent-risk)]/5" : "")}
+    />
+  );
 }

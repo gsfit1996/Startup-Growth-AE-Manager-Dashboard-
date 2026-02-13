@@ -9,7 +9,7 @@ export type ExecutiveSnapshot = {
     upside: number;
     target: number;
   };
-  forecastAccuracy: { averageError: number; trend: { quarter: string; errorPct: number }[] };
+  forecastAccuracy: { averageError: number; trend: { quarter: string; commit: number; actual: number; errorPct: number }[] };
 };
 
 export type ForecastBuckets = {
@@ -56,3 +56,20 @@ export type ManagerAction = {
   impact: "low" | "medium" | "high";
   status: "new" | "in_progress" | "blocked";
 };
+
+export type ManagerQuestionStatus = "on_track" | "watch" | "risk";
+
+export type TableDensity = "compact" | "comfortable";
+
+export type SavedTableView = {
+  id: string;
+  name: string;
+  globalFilter: string;
+  density: TableDensity;
+  sortBy?: string;
+  sortDir?: "asc" | "desc";
+  pageSize?: number;
+  visibleColumns?: string[];
+};
+
+export type ScenarioPreset = "conservative" | "current" | "aggressive";

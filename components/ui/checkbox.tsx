@@ -4,7 +4,10 @@ export function Checkbox({ className, ...props }: React.InputHTMLAttributes<HTML
   return (
     <input
       type="checkbox"
-      className={cn("h-4 w-4 rounded border border-slate-600 bg-slate-900 text-teal-500", className)}
+      className={cn(
+        "neo-focus h-4 w-4 rounded border border-[color:var(--border)] bg-[color:var(--surface-0)] text-[color:var(--accent-teal)]",
+        className,
+      )}
       {...props}
     />
   );

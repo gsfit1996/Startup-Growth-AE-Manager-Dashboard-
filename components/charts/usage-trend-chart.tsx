@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Line,
   LineChart,
@@ -16,17 +17,23 @@ type UsageTrendChartProps = {
 
 export function UsageTrendChart({ data }: UsageTrendChartProps) {
   return (
-    <div className="h-64 w-full">
-      <ResponsiveContainer>
+    <motion.div
+      className="h-64 w-full"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.36 }}
+    >
+      <ResponsiveContainer minWidth={220} minHeight={220}>
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-          <XAxis dataKey="date" stroke="#94a3b8" />
-          <YAxis stroke="#94a3b8" />
-          <Tooltip contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #1e293b" }} />
-          <Line type="monotone" dataKey="apiCalls" stroke="#14b8a6" strokeWidth={2} dot={false} />
-          <Line type="monotone" dataKey="seatsActive" stroke="#38bdf8" strokeWidth={2} dot={false} />
+          <CartesianGrid strokeDasharray="2 5" stroke="#24324d" />
+          <XAxis dataKey="date" stroke="#95a8c7" />
+          <YAxis stroke="#95a8c7" />
+          <Tooltip contentStyle={{ backgroundColor: "#111a2d", border: "1px solid #24324d", borderRadius: "12px" }} />
+          <Line type="monotone" dataKey="apiCalls" stroke="#1ac9c0" strokeWidth={2.2} dot={false} />
+          <Line type="monotone" dataKey="seatsActive" stroke="#8fb8ff" strokeWidth={2.2} dot={false} />
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </motion.div>
   );
 }
+

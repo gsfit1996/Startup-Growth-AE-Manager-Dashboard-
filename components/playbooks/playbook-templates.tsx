@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 
 type PlaybookTemplate = {
@@ -21,11 +22,11 @@ const templates: PlaybookTemplate[] = [
     objective: "Recover executive alignment and lock a renewal path in one week.",
     checklist: [
       "Day 1: risk alignment call and stakeholder map refresh",
-      "Day 2: product/CS escalation and usage root-cause summary",
+      "Day 2: product or CS escalation and usage root-cause summary",
       "Day 3: value recap and quantified ROI memo",
-      "Day 4: commercial options with give/get matrix",
+      "Day 4: commercial options with give or get matrix",
       "Day 5: exec sponsor call and final objection handling",
-      "Day 6: legal/procurement acceleration",
+      "Day 6: legal and procurement acceleration",
       "Day 7: renewal close plan and post-renewal success checkpoint",
     ],
   },
@@ -37,7 +38,7 @@ const templates: PlaybookTemplate[] = [
       "Define initial workload win criteria",
       "Map second and third use-cases by team",
       "Attach budget owner and timeline",
-      "Run ROI workshop with technical + economic buyer",
+      "Run ROI workshop with technical and economic buyer",
       "Sequence expansion proposal by value milestone",
     ],
   },
@@ -48,7 +49,7 @@ const templates: PlaybookTemplate[] = [
     checklist: [
       "Champion influence validated",
       "Economic buyer identified and introduced",
-      "Security/compliance stakeholder engaged",
+      "Security or compliance stakeholder engaged",
       "Ops owner agrees success metrics",
       "Executive narrative rehearsed before QBR",
     ],
@@ -60,7 +61,7 @@ const templates: PlaybookTemplate[] = [
     checklist: [
       "Confirm requested discount and driver",
       "Apply approval guardrail threshold",
-      "Define give/get trade (term, scope, logo rights)",
+      "Define give and get trade (term, scope, logo rights)",
       "Escalate exception path if needed",
       "Document final package and rationale",
     ],
@@ -80,7 +81,7 @@ const templates: PlaybookTemplate[] = [
 ];
 
 function storageKey(id: string) {
-  return `playbook-${id}`;
+  return `sgam.playbook.${id}.state`;
 }
 
 function loadStoredState() {
@@ -120,20 +121,26 @@ export function PlaybookTemplates() {
     window.localStorage.setItem(storageKey(id), JSON.stringify({ notes: nextNotes, checks: nextChecks }));
   }
 
+  const completedCount = Object.values(checks[active.id] ?? {}).filter(Boolean).length;
+  const completionRate = active.checklist.length > 0 ? (completedCount / active.checklist.length) * 100 : 0;
+
   return (
-    <div className="grid gap-4 lg:grid-cols-[280px_1fr]">
+    <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
       <Card>
         <CardHeader>
-          <CardTitle>Playbooks</CardTitle>
+          <CardTitle>Playbook Templates</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
-          {templates.map((template) => (
+          {templates.map((template, index) => (
             <Button
               key={template.id}
               variant={template.id === activeId ? "default" : "outline"}
               className="w-full justify-start text-left"
               onClick={() => setActiveId(template.id)}
             >
+              <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full border border-[color:var(--border)] text-[10px]">
+                {index + 1}
+              </span>
               {template.title}
             </Button>
           ))}
@@ -145,14 +152,24 @@ export function PlaybookTemplates() {
           <CardTitle>{active.title}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-slate-300">{active.objective}</p>
+          <p className="text-sm text-[color:var(--muted)]">{active.objective}</p>
+          <div>
+            <div className="mb-1 flex items-center justify-between text-xs text-[color:var(--muted)]">
+              <span>Progress</span>
+              <span>
+                {completedCount}/{active.checklist.length} complete
+              </span>
+            </div>
+            <Progress value={completionRate} tone={completionRate >= 70 ? "teal" : "amber"} />
+          </div>
+
           <div className="space-y-2">
             {active.checklist.map((item, idx) => {
               const checked = checks[active.id]?.[idx] ?? false;
               return (
                 <label
                   key={item}
-                  className="flex items-center gap-2 rounded-md border border-slate-800 px-3 py-2 text-sm text-slate-200"
+                  className="flex items-center gap-2 rounded-md border border-[color:var(--border)] px-3 py-2 text-sm text-[color:var(--foreground)]"
                 >
                   <Checkbox
                     checked={checked}
@@ -176,7 +193,7 @@ export function PlaybookTemplates() {
             })}
           </div>
 
-          <label className="space-y-1 text-xs text-slate-400">
+          <label className="space-y-1 text-xs text-[color:var(--muted)]">
             Working Notes
             <Textarea
               value={notes[active.id] ?? ""}
@@ -192,4 +209,3 @@ export function PlaybookTemplates() {
     </div>
   );
 }
-

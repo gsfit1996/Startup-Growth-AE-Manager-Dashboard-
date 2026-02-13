@@ -5,6 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { DataTable } from "@/components/tables/data-table";
 import { formatCurrency } from "@/lib/format";
+import { TableDensity } from "@/lib/types/dashboard";
 
 type DealRow = {
   id: string;
@@ -51,6 +52,14 @@ const columns: ColumnDef<DealRow>[] = [
   },
 ];
 
-export function TopDealsTable({ data }: { data: DealRow[] }) {
-  return <DataTable columns={columns} data={data} searchPlaceholder="Search top deals..." />;
+export function TopDealsTable({ data, density }: { data: DealRow[]; density?: TableDensity }) {
+  return (
+    <DataTable
+      tableId="top-deals"
+      columns={columns}
+      data={data}
+      searchPlaceholder="Search top deals..."
+      initialDensity={density}
+    />
+  );
 }

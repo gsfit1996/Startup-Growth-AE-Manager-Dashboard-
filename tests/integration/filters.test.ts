@@ -9,11 +9,30 @@ describe("parseFilters", () => {
     expect(result.quarter).toBe("Q1");
     expect(result.segment).toBe("all");
     expect(result.region).toBe("all");
+    expect(result.density).toBe("comfortable");
   });
 
   it("uses explicit URL params", () => {
-    const result = parseFilters({ quarter: "Q3", segment: "series_a", region: "emea", q: "alpha" });
+    const result = parseFilters({
+      quarter: "Q3",
+      segment: "series_a",
+      region: "emea",
+      q: "alpha",
+      density: "compact",
+      sort: "arr",
+      dir: "asc",
+      view: "risk-focus",
+    });
 
-    expect(result).toMatchObject({ quarter: "Q3", segment: "series_a", region: "emea", q: "alpha" });
+    expect(result).toMatchObject({
+      quarter: "Q3",
+      segment: "series_a",
+      region: "emea",
+      q: "alpha",
+      density: "compact",
+      sort: "arr",
+      dir: "asc",
+      view: "risk-focus",
+    });
   });
 });

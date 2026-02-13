@@ -8,7 +8,7 @@ export function Select({ className, options, ...props }: SelectProps) {
   return (
     <select
       className={cn(
-        "h-9 rounded-md border border-slate-700 bg-slate-900 px-3 text-sm text-slate-100 focus:border-teal-500 focus:outline-none",
+        "neo-focus h-9 rounded-lg border border-[color:var(--border)] bg-[color:var(--surface-0)] px-3 text-sm text-[color:var(--foreground)]",
         className,
       )}
       {...props}

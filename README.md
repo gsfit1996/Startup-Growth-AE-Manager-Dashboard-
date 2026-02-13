@@ -66,6 +66,18 @@ Seed remains deterministic by default because it reads the cached snapshot.
 - `/resume`: quantified profile + PDF button + dashboard link
 - `/demo-notes`: metric rationale + source transparency
 
+## UX / Workflow Enhancements
+- Neo-finance visual system with premium layered surfaces, cinematic motion, and dense enterprise readability.
+- Command palette (`Ctrl/Cmd + K`) for fast navigation and manager workflow shortcuts.
+- Upgraded tables with sorting controls, column visibility, density toggle, page size controls, sticky headers, and persisted table state.
+- Accounts workflow upgrades: quick presets, saved views, row preview drawer, and bulk manager actions.
+- Pipeline scenario builder upgrades: stage sliders, conservative/current/aggressive presets, and baseline delta cards.
+- Team workflow upgrades: richer AE performance cards and coaching 1:1 prep actions.
+- Playbooks upgraded to stepper-like workflow with progress tracking and persisted notes/checklists.
+
+## Keyboard Shortcuts
+- `Ctrl/Cmd + K`: Open command palette
+
 ## KPI Glossary
 - **NRR**: Renewal ARR won this quarter / total renewal ARR at stake this quarter.
 - **Expansion ARR**: Closed-won expansion ARR this quarter.

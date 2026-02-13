@@ -4,6 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { DataTable } from "@/components/tables/data-table";
 import { formatCurrency, formatRatio } from "@/lib/format";
+import { TableDensity } from "@/lib/types/dashboard";
 
 type LeaderboardRow = {
   aeId: string;
@@ -51,6 +52,14 @@ const columns: ColumnDef<LeaderboardRow>[] = [
   },
 ];
 
-export function TeamLeaderboardTable({ data }: { data: LeaderboardRow[] }) {
-  return <DataTable columns={columns} data={data} searchPlaceholder="Search AEs..." />;
+export function TeamLeaderboardTable({ data, density }: { data: LeaderboardRow[]; density?: TableDensity }) {
+  return (
+    <DataTable
+      tableId="team-leaderboard"
+      columns={columns}
+      data={data}
+      searchPlaceholder="Search AEs..."
+      initialDensity={density}
+    />
+  );
 }

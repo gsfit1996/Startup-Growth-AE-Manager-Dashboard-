@@ -15,25 +15,31 @@ export default async function PipelinePage({
 
   return (
     <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Funnel Conversion by Stage</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <FunnelConversionChart data={data.funnel} />
-        </CardContent>
-      </Card>
+      <section data-reveal="true">
+        <Card>
+          <CardHeader>
+            <CardTitle>Funnel Conversion by Stage</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <FunnelConversionChart data={data.funnel} />
+          </CardContent>
+        </Card>
+      </section>
 
-      <ForecastScenarioBuilder quarter={filters.quarter} stageDefaults={data.scenarioDefaults} base={data.scenarioBase} />
+      <section data-reveal="true">
+        <ForecastScenarioBuilder quarter={filters.quarter} stageDefaults={data.scenarioDefaults} base={data.scenarioBase} />
+      </section>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Deal Desk</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <DealDeskTable data={data.dealDesk} />
-        </CardContent>
-      </Card>
+      <section data-reveal="true">
+        <Card>
+          <CardHeader>
+            <CardTitle>Deal Desk and Guardrails</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <DealDeskTable data={data.dealDesk} density={filters.density} />
+          </CardContent>
+        </Card>
+      </section>
     </div>
   );
 }

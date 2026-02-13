@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/tables/data-table";
 import { formatCurrency } from "@/lib/format";
+import { TableDensity } from "@/lib/types/dashboard";
 
 type HealthRow = {
   accountId: string;
@@ -48,7 +49,7 @@ const columns: ColumnDef<HealthRow>[] = [
     header: "Action Plan",
     cell: ({ row }) => (
       <div className="flex flex-wrap gap-1">
-        {row.original.actions.slice(0, 2).map((action) => (
+        {row.original.actions.slice(0, 3).map((action) => (
           <Button key={action} size="sm" variant="outline" className="text-[11px]">
             {action}
           </Button>
@@ -58,6 +59,14 @@ const columns: ColumnDef<HealthRow>[] = [
   },
 ];
 
-export function HealthRiskTable({ data }: { data: HealthRow[] }) {
-  return <DataTable columns={columns} data={data} searchPlaceholder="Search at-risk accounts..." />;
+export function HealthRiskTable({ data, density }: { data: HealthRow[]; density?: TableDensity }) {
+  return (
+    <DataTable
+      tableId="health-risk"
+      columns={columns}
+      data={data}
+      searchPlaceholder="Search at-risk accounts..."
+      initialDensity={density}
+    />
+  );
 }

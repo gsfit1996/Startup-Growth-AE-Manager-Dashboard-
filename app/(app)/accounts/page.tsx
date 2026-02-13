@@ -13,12 +13,12 @@ export default async function AccountsPage({
 
   return (
     <div className="space-y-4">
-      <Card>
+      <Card data-reveal="true">
         <CardHeader>
           <CardTitle>Accounts and Health</CardTitle>
         </CardHeader>
         <CardContent>
-          <AccountsTable data={accounts} />
+          <AccountsTable data={accounts} density={filters.density} />
         </CardContent>
       </Card>
     </div>

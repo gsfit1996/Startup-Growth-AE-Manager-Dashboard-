@@ -9,7 +9,14 @@ const scenarioSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  const payload = scenarioSchema.parse(await request.json());
+  let rawPayload: unknown;
+  try {
+    rawPayload = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
+  }
+
+  const payload = scenarioSchema.parse(rawPayload);
 
   const result = await recalculatePipelineScenario(payload.quarter, payload.stageProbabilityOverrides);
   return NextResponse.json(result);

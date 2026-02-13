@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Funnel,
   FunnelChart,
@@ -14,15 +15,21 @@ type FunnelConversionChartProps = {
 
 export function FunnelConversionChart({ data }: FunnelConversionChartProps) {
   return (
-    <div className="h-72 w-full">
-      <ResponsiveContainer>
+    <motion.div
+      className="h-72 w-full"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+    >
+      <ResponsiveContainer minWidth={220} minHeight={220}>
         <FunnelChart>
-          <Tooltip contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #1e293b" }} />
-          <Funnel dataKey="count" data={data} isAnimationActive fill="#14b8a6">
-            <LabelList position="right" fill="#cbd5e1" stroke="none" dataKey="stage" />
+          <Tooltip contentStyle={{ backgroundColor: "#111a2d", border: "1px solid #24324d", borderRadius: "12px" }} />
+          <Funnel dataKey="count" data={data} isAnimationActive fill="#1ac9c0">
+            <LabelList position="right" fill="#e7edf8" stroke="none" dataKey="stage" />
           </Funnel>
         </FunnelChart>
       </ResponsiveContainer>
-    </div>
+    </motion.div>
   );
 }
+
