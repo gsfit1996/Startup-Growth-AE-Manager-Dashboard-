@@ -120,6 +120,9 @@ export function AccountPlanEditor({ accountId, initialPlan }: { accountId: strin
             </p>
           ) : null}
         </div>
+        <p className="text-xs text-slate-500">
+          Deployed demo note: updates persist per warm server instance and may reset after cold starts.
+        </p>
       </CardContent>
     </Card>
   );

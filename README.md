@@ -34,6 +34,17 @@ npm run dev
 
 Open `http://localhost:3000/dashboard`.
 
+## Vercel Deployment Behavior
+- This demo deploys with bundled SQLite (`prisma/dev.db`) for deterministic data.
+- On Vercel, the app copies bundled DB to `/tmp/startup-growth-ae-manager-dashboard.db` at runtime.
+- DB-backed pages and APIs read/write against that `/tmp` copy.
+- Write operations (for example account-plan edits) are ephemeral per warm instance and are not globally durable.
+
+## Deployment Workflow
+- Source of truth is GitHub `master`.
+- Push commits to GitHub and let Vercel Git Integration build/deploy automatically.
+- Avoid ad-hoc local CLI deployments to prevent config drift.
+
 ## Scrape Refresh Workflow
 - Sources list: `data/scrape-sources.json`
 - Cached snapshot: `data/customer_snapshot.json`
