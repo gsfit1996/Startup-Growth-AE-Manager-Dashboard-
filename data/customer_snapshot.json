@@ -1,0 +1,182 @@
+[
+  {
+    "companyName": "Notion",
+    "sourceUrl": "https://www.notion.so",
+    "industryHint": "Collaboration Software",
+    "aiUseCase": "Workflow knowledge management and content generation with AI assistants.",
+    "evidenceSnippet": "Public product pages emphasize AI-assisted documentation and productivity workflows.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Intercom",
+    "sourceUrl": "https://www.intercom.com",
+    "industryHint": "Customer Support SaaS",
+    "aiUseCase": "AI support agents and ticket triage automation for support teams.",
+    "evidenceSnippet": "Messaging and support pages reference AI-first support operations.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Canva",
+    "sourceUrl": "https://www.canva.com",
+    "industryHint": "Design Platform",
+    "aiUseCase": "AI-assisted creative generation and productivity tooling for teams.",
+    "evidenceSnippet": "Public pages highlight AI features within design and content workflows.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Replit",
+    "sourceUrl": "https://www.replit.com",
+    "industryHint": "Developer Platform",
+    "aiUseCase": "AI coding assistance and developer productivity in collaborative IDEs.",
+    "evidenceSnippet": "Platform messaging includes AI coding and agent workflows.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Scale AI",
+    "sourceUrl": "https://www.scale.com",
+    "industryHint": "AI Infrastructure",
+    "aiUseCase": "Model evaluation, alignment operations, and production AI enablement.",
+    "evidenceSnippet": "Public materials focus on enterprise AI deployment infrastructure.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Cursor",
+    "sourceUrl": "https://www.cursor.com",
+    "industryHint": "Developer Tools",
+    "aiUseCase": "Codebase-aware assistant for software engineering workflows.",
+    "evidenceSnippet": "Product pages describe AI-native software development support.",
+    "segmentHint": "Series A",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Stripe",
+    "sourceUrl": "https://www.stripe.com",
+    "industryHint": "Fintech Infrastructure",
+    "aiUseCase": "Fraud detection, risk scoring, and payment operations automation.",
+    "evidenceSnippet": "Public docs and product pages include AI/ML usage in payment risk workflows.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Snowflake",
+    "sourceUrl": "https://www.snowflake.com",
+    "industryHint": "Data Cloud",
+    "aiUseCase": "Data platform enablement for enterprise AI applications and analytics.",
+    "evidenceSnippet": "Public platform messaging includes AI data app support.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Cloudflare",
+    "sourceUrl": "https://www.cloudflare.com",
+    "industryHint": "Security and Infrastructure",
+    "aiUseCase": "AI app security and edge deployment controls.",
+    "evidenceSnippet": "Public content references security posture for AI workloads.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Zapier",
+    "sourceUrl": "https://www.zapier.com",
+    "industryHint": "Automation",
+    "aiUseCase": "AI-driven workflow automation for go-to-market and operations.",
+    "evidenceSnippet": "Public workflows and product pages feature AI automation use-cases.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Airtable",
+    "sourceUrl": "https://www.airtable.com",
+    "industryHint": "Work Management",
+    "aiUseCase": "AI-assisted operations and team workflow acceleration.",
+    "evidenceSnippet": "Public messaging references AI integration in workflows.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Sentry",
+    "sourceUrl": "https://www.sentry.io",
+    "industryHint": "Observability",
+    "aiUseCase": "AI-assisted debugging and incident triage for engineering teams.",
+    "evidenceSnippet": "Public docs include AI-assisted troubleshooting and productivity features.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "The New York Times",
+    "sourceUrl": "https://www.nytimes.com",
+    "industryHint": "Media",
+    "aiUseCase": "Editorial workflow support and newsroom productivity exploration.",
+    "evidenceSnippet": "Public reporting covers AI adoption themes in media workflows.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Gong",
+    "sourceUrl": "https://www.gong.io",
+    "industryHint": "Revenue Intelligence",
+    "aiUseCase": "Conversation intelligence for pipeline and forecasting rigor.",
+    "evidenceSnippet": "Public platform pages emphasize AI insights for sales teams.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "HubSpot",
+    "sourceUrl": "https://www.hubspot.com",
+    "industryHint": "CRM and Marketing",
+    "aiUseCase": "AI copilots for GTM productivity and customer lifecycle workflows.",
+    "evidenceSnippet": "Public product pages describe AI features in CRM and support.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Loom",
+    "sourceUrl": "https://www.loom.com",
+    "industryHint": "Video Collaboration",
+    "aiUseCase": "AI summaries and knowledge transfer from recorded team communication.",
+    "evidenceSnippet": "Public feature pages reference AI-generated summaries.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Figma",
+    "sourceUrl": "https://www.figma.com",
+    "industryHint": "Design Collaboration",
+    "aiUseCase": "AI-assisted ideation and design workflow acceleration.",
+    "evidenceSnippet": "Public materials mention AI support in collaborative product design.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Anthropic",
+    "sourceUrl": "https://www.anthropic.com/customers",
+    "industryHint": "AI Foundation Models",
+    "aiUseCase": "Enterprise and startup AI deployment on Claude-powered workflows.",
+    "evidenceSnippet": "Public customer materials describe AI use-cases across support, coding, and operations.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Linear",
+    "sourceUrl": "https://linear.app",
+    "industryHint": "Product Management",
+    "aiUseCase": "AI-assisted product planning and issue triage workflows.",
+    "evidenceSnippet": "Public product pages discuss AI in ticket and roadmap workflows.",
+    "segmentHint": "Series A",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  },
+  {
+    "companyName": "Vercel",
+    "sourceUrl": "https://vercel.com",
+    "industryHint": "Developer Platform",
+    "aiUseCase": "AI web app deployment and developer experience tooling.",
+    "evidenceSnippet": "Public docs and platform pages show AI app deployment pathways.",
+    "segmentHint": "Series B+",
+    "lastSeenAt": "2026-02-13T00:00:00.000Z"
+  }
+]

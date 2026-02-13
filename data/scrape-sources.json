@@ -1,0 +1,28 @@
+{
+  "maxDepth": 2,
+  "maxPages": 200,
+  "concurrency": 5,
+  "timeoutMs": 8000,
+  "seeds": [
+    "https://www.anthropic.com/customers",
+    "https://www.anthropic.com/news",
+    "https://www.anthropic.com/claude",
+    "https://www.notion.so",
+    "https://www.intercom.com",
+    "https://www.canva.com",
+    "https://www.replit.com",
+    "https://www.scale.com",
+    "https://www.cursor.com",
+    "https://www.stripe.com",
+    "https://www.snowflake.com",
+    "https://www.cloudflare.com",
+    "https://www.zapier.com",
+    "https://www.airtable.com",
+    "https://www.sentry.io",
+    "https://www.nytimes.com",
+    "https://www.gong.io",
+    "https://www.hubspot.com",
+    "https://www.loom.com",
+    "https://www.figma.com"
+  ]
+}
